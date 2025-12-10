@@ -1,0 +1,308 @@
+// Sample data for Gaokao Math Problems
+// Images are referenced from the math_questions directory (served via public or imported if moved)
+
+export const problems = [
+    {
+        id: 'trig-001',
+        module: 'trig',
+        title: '2024广东高考 - 三角函数求值',
+        difficulty: 'Easy',
+        image: '/problems/trig-1.jpg',
+        knowledgePoints: ['同角三角函数关系', '和角公式'],
+        description: '已知 angle alpha in quadrant 1, and sin(alpha) = 3/5, find cos(alpha + pi/3).',
+        steps: [
+            {
+                id: 1,
+                text: '第一步：分析已知条件。已知 α 为第一象限角，且 sin(α) = 3/5。',
+                explanation: '在单位圆上，sin(α) 对应 y 坐标。因为是第一象限，cos(α) 必须为正。',
+                animationState: { angle: 36.87 } // arcsin(0.6) approx 36.87 deg
+            },
+            {
+                id: 2,
+                text: '第二步：求 cos(α)。利用 sin²α + cos²α = 1。',
+                explanation: 'cos(α) = √(1 - (3/5)²) = √(16/25) = 4/5 = 0.8。',
+                animationState: { angle: 36.87, showCos: true }
+            },
+            {
+                id: 3,
+                text: '第三步：展开目标式 cos(α + π/3)。',
+                explanation: '利用和角公式：cos(A+B) = cosAcosB - sinAsinB。\\ncos(α + π/3) = cos(α)cos(π/3) - sin(α)sin(π/3)。',
+                animationState: { angle: 36.87, showFormula: 'cos(a+b)' }
+            },
+            {
+                id: 4,
+                text: '第四步：代入数值计算。',
+                explanation: '= (4/5)*(1/2) - (3/5)*(√3/2) = (4 - 3√3) / 10。',
+                animationState: { angle: 96.87 } // Show the final angle alpha + 60deg
+            }
+        ]
+    },
+    {
+        id: 'seq-001',
+        module: 'sequences',
+        title: '2023广东高考 - 等差数列求和',
+        difficulty: 'Medium',
+        image: '/problems/seq-1.jpg',
+        knowledgePoints: ['等差数列', '数列求和'],
+        description: '已知等差数列 {an} 中，a1 = 2, a3 = 6，求前10项和 S10。',
+        steps: [
+            {
+                id: 1,
+                text: '第一步：求公差 d。',
+                explanation: 'a3 = a1 + 2d => 6 = 2 + 2d => 2d = 4 => d = 2。',
+                animationState: { type: 'arithmetic', a1: 2, d: 2, n: 3 }
+            },
+            {
+                id: 2,
+                text: '第二步：确定通项公式。',
+                explanation: 'an = 2 + (n-1)*2 = 2n。',
+                animationState: { type: 'arithmetic', a1: 2, d: 2, n: 10 }
+            },
+            {
+                id: 3,
+                text: '第三步：利用求和公式 S_n。',
+                explanation: 'S10 = (10 * (a1 + a10)) / 2。a10 = 20。S10 = 5 * (2 + 20) = 110。',
+                animationState: { type: 'arithmetic', a1: 2, d: 2, n: 10, highlightSum: true }
+            }
+        ]
+    },
+    {
+        id: 'q15-gaokao-2024',
+        module: 'geometry',
+        title: '【真题解析】2024广东高考 - 解三角形',
+        difficulty: 'Hard',
+        image: '/problems/question15.jpg',
+        knowledgePoints: ['正弦定理', '余弦定理', '三角形面积', '和角公式', '角和关系'],
+        description: '记 △ABC 的内角 A, B, C 的对边分别为 a, b, c。已知 a·cosC - c·cosA = c + b。\\n(1) 求 A 的角度；\\n(2) D 为边 BC 上一点，若 ∠BAD = 90°，且 BD = 4DC = 4，求 △ABC 的面积。',
+        steps: [
+            {
+                id: 1,
+                text: '第一问：利用正弦定理化简',
+                explanation: '【正弦定理】\\n由正弦定理 a/sinA = b/sinB = c/sinC，将边化为角：\\n\\n已知条件：a·cosC - c·cosA = c + b\\n\\n两边同时除以外接圆直径 2R：\\n(a/2R)·2R·cosC - (c/2R)·2R·cosA = (c/2R)·2R + (b/2R)·2R\\n\\n代入 a/2R = sinA, b/2R = sinB, c/2R = sinC：\\nsinA·cosC - sinC·cosA = sinC + sinB',
+                animationState: {
+                    triangleData: {
+                        A: { x: 200, y: 60 },
+                        B: { x: 340, y: 200 },
+                        C: { x: 60, y: 200 },
+                        angleA: '?',
+                        angleB: 'B',
+                        angleC: 'C',
+                        showD: false,
+                        showRightAngle: false
+                    }
+                }
+            },
+            {
+                id: 2,
+                text: '应用和差公式化简',
+                explanation: '【和差公式 / 角和关系】\\n利用两角差的正弦公式：sin(A-C) = sinA·cosC - cosA·sinC\\n\\n所以左边 = sin(A-C)\\n\\n在三角形中，A + B + C = π，因此 B = π - (A+C)\\nsinB = sin[π - (A+C)] = sin(A+C) = sinA·cosC + cosA·sinC\\n\\n代入原式：\\nsin(A-C) = sinC + sin(A+C)',
+                animationState: {
+                    triangleData: {
+                        A: { x: 200, y: 60 },
+                        B: { x: 340, y: 200 },
+                        C: { x: 60, y: 200 },
+                        angleA: '?',
+                        angleB: 'B',
+                        angleC: 'C',
+                        showD: false,
+                        showRightAngle: false
+                    }
+                }
+            },
+            {
+                id: 3,
+                text: '展开右边并化简',
+                explanation: '【化简 / 转化】\\n展开 sin(A+C)：\\nsin(A-C) = sinC + sinA·cosC + cosA·sinC\\n\\n移项整理：\\nsinA·cosC - cosA·sinC = sinC + sinA·cosC + cosA·sinC\\n-cosA·sinC = sinC + cosA·sinC\\n-2cosA·sinC = sinC\\n\\n因为 C ∈ (0,π)，所以 sinC > 0，两边同除以 sinC：\\n-2cosA = 1\\ncosA = -1/2',
+                animationState: {
+                    triangleData: {
+                        A: { x: 200, y: 60 },
+                        B: { x: 340, y: 200 },
+                        C: { x: 60, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'B',
+                        angleC: 'C',
+                        showD: false,
+                        showRightAngle: false
+                    }
+                }
+            },
+            {
+                id: 4,
+                text: '确定角 A 的值',
+                explanation: '【求角】\\n因为 A 是三角形内角，A ∈ (0, π)\\n\\n在此范围内满足 cosA = -1/2 的角只有：\\nA = 120° = 2π/3\\n\\n【第一问答案】A = 2π/3',
+                animationState: {
+                    triangleData: {
+                        A: { x: 200, y: 60 },
+                        B: { x: 340, y: 200 },
+                        C: { x: 60, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'π/3',
+                        angleC: 'π/3',
+                        showD: false,
+                        showRightAngle: false
+                    }
+                }
+            },
+            {
+                id: 5,
+                text: '第二问：分析几何条件',
+                explanation: '【几何分析 / 角和关系】\\n已知条件整理：\\n• A = 120° (第一问结果)\\n• BD = 4DC = 4，因此 DC = 1\\n• BC = BD + DC = 4 + 1 = 5，即 a = 5\\n• ∠BAD = 90°\\n\\n由 ∠BAC = 120° 和 ∠BAD = 90°：\\n∠DAC = ∠BAC - ∠BAD = 120° - 90° = 30°',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'B',
+                        angleC: 'C',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 6,
+                text: '分析三角形角度关系',
+                explanation: '【角和关系 / 几何分析】\\n设 ∠ABC = B, ∠ACB = C\\n\\n在 △ABD 中（∠BAD = 90°）：\\n∠ABD = B, ∠ADB = 90° - B\\n\\n在 △ADC 中（∠DAC = 30°）：\\n∠ACD = C, ∠ADC = 150° - C\\n\\n因为 D 在 BC 上，∠ADB 和 ∠ADC 互补：\\n∠ADB + ∠ADC = 180°\\n(90° - B) + (150° - C) = 180°\\nB + C = 60°\\n\\n验证：A + B + C = 120° + 60° = 180° ✓',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'B',
+                        angleC: 'C',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 7,
+                text: '在 Rt△ABD 中求边长关系',
+                explanation: '【边角关系 / 三角函数】\\n在直角三角形 ABD 中（∠BAD = 90°）：\\n• 斜边 BD = 4\\n• AB = c (待求)\\n• AD = ? (待求)\\n\\n由三角函数定义：\\nAB = BD · cos B\\nc = 4 cos B ... ①\\n\\nAD = BD · sin B\\nAD = 4 sin B ... ②',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'B',
+                        angleC: 'C',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 8,
+                text: '在 △ADC 中应用正弦定理',
+                explanation: '【正弦定理 / 边角关系】\\n在 △ADC 中，应用正弦定理：\\nDC/sin(∠DAC) = AD/sin(∠ACD)\\n\\n代入已知值：\\n1/sin(π/6) = AD/sin C\\n1/(1/2) = AD/sin C\\n2 = AD/sin C\\nAD = 2 sin C ... ③\\n\\n结合 ② 式：\\n4 sin B = 2 sin C\\nsin C = 2 sin B ... ④',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'B',
+                        angleC: 'C',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 9,
+                text: '求解角 B',
+                explanation: '【和差公式 / 化简 / 求角】\\n由 B + C = 60°，得 C = 60° - B\\n\\n代入 ④ 式：\\nsin(60° - B) = 2 sin B\\n\\n展开左边：\\nsin 60° · cos B - cos 60° · sin B = 2 sin B\\n(√3/2) cos B - (1/2) sin B = 2 sin B\\n(√3/2) cos B = (5/2) sin B\\n\\n两边同除以 cos B：\\ntan B = √3/5',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'arctan(√3/5)',
+                        angleC: 'π/3-B',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 10,
+                text: '计算 sin B 和 cos B',
+                explanation: '【三角恒等式 / 代数运算】\\n由 tan B = √3/5：\\n\\nsin²B/cos²B = 3/25\\nsin²B = (3/25)cos²B\\n\\n代入 sin²B + cos²B = 1：\\n(3/25)cos²B + cos²B = 1\\n(28/25)cos²B = 1\\ncos²B = 25/28\\ncos B = 5√7/14\\n\\nsin B = tan B · cos B = (√3/5) · (5√7/14) = √21/14',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'arctan(√3/5)',
+                        angleC: 'π/3-B',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 11,
+                text: '求边长 b 和 c',
+                explanation: '【边角关系 / 正弦定理 / 求边】\\n由 ① 式：\\nc = 4 cos B = 4 · (5√7/14) = 10√7/7\\n\\n在 △ADC 中应用正弦定理求 b：\\nb/sin(∠ADC) = DC/sin(∠DAC)\\n\\n∠ADC = 150° - C = 150° - (60° - B) = 90° + B\\n\\nb/sin(90° + B) = 1/sin 30°\\nb = 2 sin(90° + B) = 2 cos B\\nb = 2 · (5√7/14) = 5√7/7',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'arctan(√3/5)',
+                        angleC: 'π/3-B',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            },
+            {
+                id: 12,
+                text: '计算三角形面积',
+                explanation: '【面积公式 / 代数运算】\\n三角形 ABC 的面积：\\nS = (1/2) · b · c · sin A\\n\\n代入数值：\\nS = (1/2) · (5√7/7) · (10√7/7) · sin(2π/3)\\nS = (1/2) · (5√7/7) · (10√7/7) · (√3/2)\\nS = (1/4) · (50 · 7)/49 · √3\\nS = (350√3)/196\\nS = (25√3)/14\\n\\n【第二问答案】S△ABC = 25√3/14',
+                animationState: {
+                    triangleData: {
+                        A: { x: 230, y: 80 },
+                        B: { x: 350, y: 200 },
+                        C: { x: 50, y: 200 },
+                        D: { x: 110, y: 200 },
+                        angleA: '2π/3',
+                        angleB: 'arctan(√3/5)',
+                        angleC: 'π/3-B',
+                        angleBAD: 'π/2',
+                        angleDAC: 'π/6',
+                        showD: true,
+                        showRightAngle: true
+                    }
+                }
+            }
+        ]
+    }
+];
