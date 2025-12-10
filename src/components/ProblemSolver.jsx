@@ -8,8 +8,10 @@ import Geometry from '../modules/Geometry';
 export default function ProblemSolver({ problem, onBack }) {
     const [currentStepIndex, setCurrentStepIndex] = useState(-1); // -1 means just showing the problem
 
-    const currentStep = currentStepIndex >= 0 ? problem.steps[currentStepIndex] : null;
-    const animationState = currentStep ? currentStep.animationState : null;
+    // Add defensive checks for problem data
+    const steps = problem?.steps || [];
+    const currentStep = currentStepIndex >= 0 && steps[currentStepIndex] ? steps[currentStepIndex] : null;
+    const animationState = currentStep?.animationState || null;
 
     const handleStepClick = (index) => {
         setCurrentStepIndex(index);
@@ -61,7 +63,7 @@ export default function ProblemSolver({ problem, onBack }) {
                         </div>
                     )}
 
-                    {problem.knowledgePoints && (
+                    {problem?.knowledgePoints && Array.isArray(problem.knowledgePoints) && problem.knowledgePoints.length > 0 && (
                         <div style={{ marginBottom: '1rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                             {problem.knowledgePoints.map((kp, i) => (
                                 <span key={i} style={{
@@ -95,34 +97,40 @@ export default function ProblemSolver({ problem, onBack }) {
 
                 <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem' }}>
                     <h4 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>解题步骤 (Solution Steps)</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        {problem.steps.map((step, index) => (
-                            <div
-                                key={step.id}
-                                onClick={() => handleStepClick(index)}
-                                className={`glass-panel ${currentStepIndex === index ? 'active-step' : ''}`}
-                                style={{
-                                    padding: '1rem',
-                                    cursor: 'pointer',
-                                    border: currentStepIndex === index ? '1px solid var(--primary)' : '1px solid var(--border-light)',
-                                    background: currentStepIndex === index ? '#eff6ff' : '#ffffff',
-                                    transition: 'all 0.2s'
-                                }}
-                            >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                    {currentStepIndex >= index ? <CheckCircle size={16} color="#4ade80" /> : <Circle size={16} color="var(--text-muted)" />}
-                                    <span style={{ fontWeight: 'bold', color: currentStepIndex === index ? 'var(--primary)' : 'var(--text-main)' }}>
-                                        {step.text}
-                                    </span>
+                    {steps.length > 0 ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            {steps.map((step, index) => (
+                                <div
+                                    key={step?.id || index}
+                                    onClick={() => handleStepClick(index)}
+                                    className={`glass-panel ${currentStepIndex === index ? 'active-step' : ''}`}
+                                    style={{
+                                        padding: '1rem',
+                                        cursor: 'pointer',
+                                        border: currentStepIndex === index ? '1px solid var(--primary)' : '1px solid var(--border-light)',
+                                        background: currentStepIndex === index ? '#eff6ff' : '#ffffff',
+                                        transition: 'all 0.2s'
+                                    }}
+                                >
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                        {currentStepIndex >= index ? <CheckCircle size={16} color="#4ade80" /> : <Circle size={16} color="var(--text-muted)" />}
+                                        <span style={{ fontWeight: 'bold', color: currentStepIndex === index ? 'var(--primary)' : 'var(--text-main)' }}>
+                                            {step?.text || '步骤说明'}
+                                        </span>
+                                    </div>
+                                    {currentStepIndex >= index && (
+                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginLeft: '1.5rem', marginTop: '0.5rem', whiteSpace: 'pre-line', lineHeight: '1.6' }}>
+                                            {step?.explanation || '详细解释'}
+                                        </p>
+                                    )}
                                 </div>
-                                {currentStepIndex >= index && (
-                                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginLeft: '1.5rem', marginTop: '0.5rem', whiteSpace: 'pre-line', lineHeight: '1.6' }}>
-                                        {step.explanation}
-                                    </p>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                            暂无解题步骤
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -30,6 +30,7 @@ export const trigProblemsExtended = [
         region: '江苏',
         examType: '高考',
         sourceUrl: 'https://jiangsu.eol.cn',
+        knowledgePoints: ['余弦定理', '正弦定理'],
         description: '在 △ABC 中, a=3, b=4, ∠C=60°. (1) 求 c; (2) 求 sin A.',
         steps: [
             { id: 1, text: '即刻求解 c', explanation: 'c² = 9 + 16 - 2*3*4*1/2 = 13. c=√13.', animationState: { triangleData: { angleC: '60°' } } },
@@ -45,6 +46,7 @@ export const trigProblemsExtended = [
         region: '江苏',
         examType: '高考',
         sourceUrl: 'https://jiangsu.eol.cn',
+        knowledgePoints: ['辅助角公式', '三角不等式'],
         description: 'f(x) = sin x + cos x. 求 f(x) > 1 的解集.',
         steps: [
             { id: 1, text: '化简', explanation: '√2 sin(x + π/4) > 1.', animationState: { angle: 45 } },
@@ -54,11 +56,13 @@ export const trigProblemsExtended = [
     // ... Filling more Jiangsu problems
     {
         id: 'gk-js-2020-1', module: 'trig', title: '2020江苏高考 - 填空题', difficulty: 'Easy', year: 2020, region: '江苏', examType: '高考',
+        knowledgePoints: ['二倍角公式', '万能公式'],
         description: '已知 tan α = 2. 求 sin 2α.', steps: [{ id: 1, text: '万能公式', explanation: 'sin 2α = 2tan α / (1+tan²α) = 4/5.', animationState: { angle: 63 } }]
     },
     {
         id: 'gk-js-2019-1', module: 'geometry', title: '2019江苏高考 - 解三角形', difficulty: 'Hard', year: 2019, region: '江苏', examType: '高考',
-        description: '△ABC, AB=2, AC=3, A=60. 求中线 AD 长.', steps: [{ id: 1, text: '向量法', explanation: '略', animationState: { triangleData: { showD: true } } }]
+        knowledgePoints: ['向量法', '中线定理'],
+        description: '△ABC, AB=2, AC=3, A=60. 求中线 AD 长.', steps: [{ id: 1, text: '向量法', explanation: '利用向量法求中线长，设D为BC中点，则AD = (AB + AC)/2，计算得中线长。', animationState: { triangleData: { showD: true } } }]
     },
 
     // ==========================================
@@ -87,6 +91,7 @@ export const trigProblemsExtended = [
         year: 2023,
         region: '浙江',
         examType: '高考',
+        knowledgePoints: ['二倍角公式', '同角三角函数关系'],
         description: '已知 sin 2α = 2/3. 求 (sin α + cos α)²',
         steps: [
             { id: 1, text: '展开公式', explanation: '原式 = sin²α + 2sin α cos α + cos²α = 1 + sin 2α.', animationState: { angle: 0 } },
@@ -95,14 +100,17 @@ export const trigProblemsExtended = [
     },
     {
         id: 'gk-zj-2022-1', module: 'geometry', title: '2022浙江高考 - 面积比', difficulty: 'Hard', year: 2022, region: '浙江', examType: '高考',
+        knowledgePoints: ['三角形面积', '面积比'],
         description: 'D 为 BC 中点, E 为 AC 上一点, AE=2EC. 求 S_CDE / S_ABC.', steps: [{ id: 1, text: '面积分割', explanation: 'S_CDE = 1/2 S_BCE = 1/2 * 1/3 S_ABC = 1/6.', animationState: { triangleData: { showD: true } } }]
     },
     {
         id: 'gk-zj-2021-1', module: 'trig', title: '2021浙江高考 - 周期', difficulty: 'Easy', year: 2021, region: '浙江', examType: '高考',
+        knowledgePoints: ['三角函数周期'],
         description: 'f(x) = |sin x|. 求 T.', steps: [{ id: 1, text: '图像分析', explanation: 'T = π.', animationState: { angle: 0 } }]
     },
     {
         id: 'gk-zj-2020-1', module: 'trig', title: '2020浙江高考 - 切化弦', difficulty: 'Medium', year: 2020, region: '浙江', examType: '高考',
+        knowledgePoints: ['二倍角公式', '切化弦'],
         description: '1/tan α - tan α = 2. 求 tan 2α.', steps: [{ id: 1, text: '化简左边', explanation: '(cos/sin - sin/cos) = (cos²-sin²)/sin cos = 2cos 2α / sin 2α = 2/tan 2α.', animationState: { angle: 0 } }, { id: 2, text: '求值', explanation: '2/tan 2α = 2 => tan 2α = 1.', animationState: { angle: 45 } }]
     },
 
@@ -117,16 +125,17 @@ export const trigProblemsExtended = [
         year: 2024,
         region: '天津',
         examType: '高考',
+        knowledgePoints: ['正弦定理', '外接圆'],
         description: '在 △ABC 中, a/sin A = 3. 求 R.',
         steps: [
             { id: 1, text: '直接应用', explanation: '2R = 3 => R = 1.5.', animationState: { triangleData: { angleA: '?' } } }
         ]
     },
     {
-        id: 'gk-tj-2023-1', module: 'trig', title: '2023天津高考 - 诱导公式', difficulty: 'Easy', year: 2023, region: '天津', examType: '高考', description: 'cos(π+α) = -1/2. 求 cos α.', steps: [{ id: 1, text: '变形', explanation: '-cos α = -1/2 => cos α = 1/2.', animationState: { angle: 60 } }]
+        id: 'gk-tj-2023-1', module: 'trig', title: '2023天津高考 - 诱导公式', difficulty: 'Easy', year: 2023, region: '天津', examType: '高考', knowledgePoints: ['诱导公式'], description: 'cos(π+α) = -1/2. 求 cos α.', steps: [{ id: 1, text: '变形', explanation: '-cos α = -1/2 => cos α = 1/2.', animationState: { angle: 60 } }]
     },
     {
-        id: 'gk-tj-2022-1', module: 'trig', title: '2022天津高考 - 同角关系', difficulty: 'Easy', year: 2022, region: '天津', examType: '高考', description: 'sin α = 3/5, α ∈ II. 求 tan α.', steps: [{ id: 1, text: '计算', explanation: '-3/4.', animationState: { angle: 143 } }]
+        id: 'gk-tj-2022-1', module: 'trig', title: '2022天津高考 - 同角关系', difficulty: 'Easy', year: 2022, region: '天津', examType: '高考', knowledgePoints: ['同角三角函数关系'], description: 'sin α = 3/5, α ∈ II. 求 tan α.', steps: [{ id: 1, text: '计算', explanation: 'cos α = -4/5, tan α = -3/4.', animationState: { angle: 143 } }]
     },
 
     // ==========================================
@@ -140,19 +149,20 @@ export const trigProblemsExtended = [
         year: 2023,
         region: '全国',
         examType: '高考',
+        knowledgePoints: ['三角方程', '余弦函数'],
         description: 'f(x) = cos(2x + π/6). 求 f(x) = 1/2 所有解.',
         steps: [
             { id: 1, text: '解方程', explanation: '2x + π/6 = 2kπ ± π/3.', animationState: { angle: 60 } }
         ]
     },
     {
-        id: 'gk-qg-2023-2', module: 'geometry', title: '2023全国乙卷 - 余弦定理', difficulty: 'Medium', year: 2023, region: '全国', examType: '高考', description: 'a²+c²-b²=ac. 求 B.', steps: [{ id: 1, text: '计算', explanation: 'cos B = 1/2 => B=60.', animationState: { triangleData: { angleB: '60' } } }]
+        id: 'gk-qg-2023-2', module: 'geometry', title: '2023全国乙卷 - 余弦定理', difficulty: 'Medium', year: 2023, region: '全国', examType: '高考', knowledgePoints: ['余弦定理'], description: 'a²+c²-b²=ac. 求 B.', steps: [{ id: 1, text: '计算', explanation: 'cos B = 1/2 => B=60.', animationState: { triangleData: { angleB: '60' } } }]
     },
     {
-        id: 'gk-qg-2022-1', module: 'trig', title: '2022全国I卷 - 函数最值', difficulty: 'Hard', year: 2022, region: '全国', examType: '高考', description: 'f(x)=sin x + 2cos x. Max?', steps: [{ id: 1, text: '辅助角', explanation: '√5 sin(x+φ). Max=√5.', animationState: { angle: 63 } }]
+        id: 'gk-qg-2022-1', module: 'trig', title: '2022全国I卷 - 函数最值', difficulty: 'Hard', year: 2022, region: '全国', examType: '高考', knowledgePoints: ['辅助角公式', '三角函数最值'], description: 'f(x)=sin x + 2cos x. Max?', steps: [{ id: 1, text: '辅助角', explanation: '√5 sin(x+φ). Max=√5.', animationState: { angle: 63 } }]
     },
     {
-        id: 'gk-qg-2022-2', module: 'geometry', title: '2022全国II卷 - 面积公式', difficulty: 'Medium', year: 2022, region: '全国', examType: '高考', description: 'b=2, c=1, A=150. S=?', steps: [{ id: 1, text: '计算', explanation: 'S = 1/2 * 2 * 1 * 1/2 = 1/2.', animationState: { triangleData: { angleA: '150' } } }]
+        id: 'gk-qg-2022-2', module: 'geometry', title: '2022全国II卷 - 面积公式', difficulty: 'Medium', year: 2022, region: '全国', examType: '高考', knowledgePoints: ['三角形面积'], description: 'b=2, c=1, A=150. S=?', steps: [{ id: 1, text: '计算', explanation: 'S = 1/2 * 2 * 1 * sin(150°) = 1/2 * 2 * 1 * 1/2 = 1/2.', animationState: { triangleData: { angleA: '150' } } }]
     },
 
     // ==========================================
