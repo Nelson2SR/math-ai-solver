@@ -219,3 +219,83 @@ input[type=range]::-moz-range-thumb {
   border-color: var(--primary) !important;
   box-shadow: 0 2px 8px var(--primary-glow) !important;
 }
+
+/* Hamburger Menu Button (Mobile Only) */
+.hamburger-button {
+  display: none; /* Hidden on desktop */
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger-button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.hamburger-button:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 767px) {
+  /* Show hamburger button on mobile */
+  .hamburger-button {
+    display: block;
+  }
+
+  /* Show overlay when menu is open */
+  .mobile-overlay {
+    display: block;
+  }
+
+  /* Sidebar mobile styles */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Hidden by default */
+    bottom: 0;
+    width: 280px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  /* Sidebar open state */
+  .sidebar.mobile-open {
+    left: 0; /* Slide in */
+  }
+
+  /* Main content full width on mobile */
+  .main-content {
+    padding: 1rem;
+    padding-top: 4rem; /* Space for hamburger button */
+  }
+
+  /* App container */
+  .app-container {
+    flex-direction: column;
+  }
+}
