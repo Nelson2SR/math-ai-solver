@@ -2,9 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { problems as localProblems } from '../data/problems';
 import { gaokaoProblems } from '../data/gaokao_problems';
 import { trigProblemsExtended } from '../data/trig_problems_extended';
+import { gaokaoArtsProblems2024 } from '../data/gaokao_arts_2024';
+import { gaokao_batch_2023_2024 } from '../data/gaokao_batch';
 import { BookOpen, ArrowRight, Filter } from 'lucide-react';
 
-const allProblems = [...localProblems, ...gaokaoProblems, ...trigProblemsExtended];
+const allProblems = [...localProblems, ...gaokaoProblems, ...trigProblemsExtended, ...gaokaoArtsProblems2024, ...gaokao_batch_2023_2024];
 
 export default function ProblemList({ onSelectProblem, onUploadMode }) {
     const [filters, setFilters] = useState({
