@@ -172,6 +172,44 @@ export default function ProblemSolver({ problem, onBack }) {
                     </div>
 
                     <div className="problem-solver-content">
+                        {/* Solving Techniques Section */}
+                        {problem?.solvingTechniques && Array.isArray(problem.solvingTechniques) && problem.solvingTechniques.length > 0 && (
+                            <div style={{ marginBottom: '2rem' }}>
+                                <h4 style={{ marginBottom: '1rem', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    💡 解答技巧
+                                </h4>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                    {problem.solvingTechniques.map((technique, index) => (
+                                        <div
+                                            key={index}
+                                            className="glass-panel"
+                                            style={{
+                                                padding: '1rem',
+                                                background: index === 0 ? '#fef3c7' : index === 1 ? '#dbeafe' : '#f0fdf4',
+                                                border: '1px solid var(--border-light)'
+                                            }}
+                                        >
+                                            <div style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text-main)', fontSize: '0.95rem' }}>
+                                                {technique.category}
+                                            </div>
+                                            {technique.content && (
+                                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                                                    {technique.content}
+                                                </p>
+                                            )}
+                                            {technique.items && Array.isArray(technique.items) && (
+                                                <ul style={{ margin: '0.5rem 0 0 0', paddingLeft: '1.5rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                                                    {technique.items.map((item, i) => (
+                                                        <li key={i} style={{ marginBottom: '0.25rem', lineHeight: '1.6' }}>{item}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         <h4 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>解题步骤 (Solution Steps)</h4>
                         {steps.length > 0 ? (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
